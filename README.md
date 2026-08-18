@@ -3,7 +3,7 @@
 **Live video bridge from the Apple PowerBook 180's internal LCD bus to HDMI/DVI.**
 
 PicoGSC taps the 26-pin panel interconnect of a PowerBook 180, captures the raw
-GSC video bus with an RP2350, and outputs it as a standard DVI signal — so a
+GSC video bus with an RP2350, and outputs it as a standard DVI signal so a
 1992 active-matrix PowerBook can drive a modern monitor, or eventually a modern
 panel fitted into its own lid.
 
@@ -18,7 +18,7 @@ at ~22 fps and is being reworked for full frame rate.
 ## What's a GSC?
 
 The **GSC (Gray Scale Controller)** is the display controller in the PowerBook
-160/165/180 — reportedly a **Chips & Technologies 65210**. It drives the panel
+160/165/180 reportedly a **Chips & Technologies 65210**. It drives the panel
 over a 26-pin flex cable with a parallel TTL interface (FPDATA[0..7], CL1, CL2,
 FLM, M, DISP_BLANK).
 
@@ -118,19 +118,7 @@ the APS6404 specification.
 | `t` | test pattern |
 | `g` | bridge on/off |
 
-The bridge runs standalone — no PC required once flashed.
-
----
-
-## Repository layout
-
-```
-firmware/picogsc/   Arduino sketch (capture + DVI output + CLI)
-docs/               wiring protocol, measured bus spec, images
-captures/           sample frames as PGM
-tools/              PGM conversion helpers
-hardware/           PCB design (not started yet)
-```
+The bridge runs standalone no PC required once flashed.
 
 ---
 
