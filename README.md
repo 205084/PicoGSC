@@ -132,6 +132,7 @@ The bridge runs standalone no PC required once flashed.
       what costs the frame rate, not bandwidth
 - [ ] Triple buffering for the ~70 Hz → 60 Hz mismatch
 - [ ] Custom PCB
+- [ ] Passive/STN LCD Reverse Engineering & Support
 - [ ] Optional kit with a modern panel for the original lid
 
 ---
