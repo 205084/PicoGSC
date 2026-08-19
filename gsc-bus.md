@@ -70,25 +70,7 @@ panel out of the test setup.
 CL2 derives from a 31.3344 MHz GSC oscillator divided by two.
 
 ### FLM is mode-dependent
-
-This tripped me up initially, so it is worth stating clearly:
-
-| State | FLM |
-|---|---|
-| ROM boot screen (blinking floppy / checkerboard) | **exactly 102 Hz** |
-| OS loaded, 16 grey levels selected | **69.9 Hz** |
-
-The burst length stays constant at ~20.4 µs; what changes is the **pause
-between bursts** (~4 µs at 102 Hz, ~15.4 µs at the slower mode). The transition
-is visible live on a scope when the ROM hands over to the OS.
-
-Note this does not fully agree with liamur's earlier reference table for the
-Duo/160 (2-bit/4-bit → 87 Hz, 1-bit → 68 Hz). Measured here at 16 grey levels
-is 69.9 Hz, i.e. his 1-bit figure. **Unresolved.**
-
-Practical consequence: **do not hard-code a frame rate.** The capture logic
-should wait on FLM and count bytes, which is mode-agnostic by construction.
-
+FLM is mode-dependent three boot regimes plus a fixed OS rate. During boot the frame rate follows the stored colour depth: 68 Hz (1-bit), 87.4 Hz (2-bit), 102 Hz (4-bit). Once the OS loads, the DB-Lite driver takes over at a fixed ~69.94 Hz regardless of depth. CL1 shifts accordingly (27.98 kHz in the 70 Hz regime, 40.8 kHz at 102 Hz) CL2 burst rate stays constant, only the inter-burst gaps change. Verified CPU-independent (identical at 33 and 16 MHz), consistent with the GSC's own 31.3344 MHz source. The apparent conflict with the DB-Lite comments turned out to be a copy-paste error in Apple's own source comments details in the original thread.
 ---
 
 ## 4. Data format
